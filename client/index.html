@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="news">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Newsie</title>
+  <link rel="stylesheet" href="basic.css">
+  <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body ng-controller="main">
+  <header>
+    <h2 class="logo">Newsie</h2>
+  </header>
+  <main>
+    <section class="controls container">
+      <!-- all your controls for filtering and and sorting go here -->
+      <div class="row">
+        <div class="col-xs-12">
+          Filter: <input ng-model="queryText">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-xs-12">
+          Sort: <select ng-model="sortBy">
+          <option ng-selected="true" value="time">Time</option>
+            <option ng-repeat="cat in metaCategories" value="{{cat.value}}">{{cat.display}}</option>
+          </select>
+          <input type="checkbox" ng-model="reverseBool"> Reverse
+        </div>
+      </div>
+
+    </section>
+    <section class="feed container">
+      <div ng-repeat="event in events | orderBy:sortBy:reverseBool | filter:queryText">
+        <div class="feed-item" feed-item event="event"></div>
+      </div>
+      <!-- news feed items go here -->
+    <!--   no matter how you choose to create a feed item (li, directive, component, etc)
+    make sure to place the 'feed-item' class on it -->
+    </section>
+  </main>
+  <script src="gregbot.js"></script>
+  <script src="lib/underscore/underscore.js"></script>
+  <script src="lib/angular/angular.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

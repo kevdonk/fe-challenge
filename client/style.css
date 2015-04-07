@@ -1,0 +1,26 @@
+/* your css */
+header {
+	z-index: 1000;
+	height: auto;
+}
+main {
+	padding: 0;
+}
+.feed-item {
+	border: 1px solid #000000;
+	padding: 5px;
+	margin: 5px;
+}
+.event-type {
+	vertical-align: middle;
+	text-align: center;
+}
+.avatar {
+	display: inline;
+	vertical-align: top;
+	width: 80px;
+	height: 60px;
+}
+.bio {
+	font-size: 8pt;
+}
